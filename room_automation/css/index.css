@@ -1,0 +1,128 @@
+.banner-image
+{
+    padding-top: 75px;     
+    padding-bottom: 50px; 
+    text-align: center; 
+    background: url("../images/background_.jpg")no-repeat center center ; 
+    background-attachment: fixed;
+    background-size: cover; 
+    height: 1180px;
+}
+.banner-content
+{
+    position: relative; 
+    padding-top: 6%; 
+    padding-bottom: 6%; 
+    margin-top: 12%; 
+    margin-bottom: 12%;
+    max-width: 660px; 
+   
+}
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container{width:750px}}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}
+.footer-background
+{
+	background-color: #fff777;
+	height: 53px;
+}
+.banner-content_
+{
+	padding-top: 200px; 
+}
+.background_signup
+{  
+    padding-bottom: 50px; 
+    text-align: center; 
+    background: url("../images/background.jpg")no-repeat center center ; 
+    background-attachment: fixed;
+    background-size: cover; 
+    height: 1080px;	
+}
+.switch
+{
+	background-color: #fffdd0;
+    height: 220px;
+    width: 350px;
+    border: 5px solid green;
+    text-align: center;
+    padding-right: 20px;
+}
+.logo
+{
+	width: 110px;
+    height: 55px;
+    float: left;
+    background: url("../images/logo.jpg")no-repeat center center;
+    background-size: cover;
+    padding-left: 20px;
+}
+.test
+{
+	width: 30px;
+}
+.video
+{
+    border: 5px solid red;
+    width: 910px;
+    height: 710px;
+}
+.logo-write
+{
+    color: #d3d3d3 ;
+    font-family: serif;
+    flex-wrap: wrap;
+    padding-left: 12px;
+    padding-top: 14px;
+    float: left;
+}
+.navbar-header
+{
+    height: 82px;
+}
+.navbar-right
+{
+    padding-top: 14px;
+}
+.navbar-brand
+{
+    width: 500px;
+}
+.navbar
+{
+    background-color: black;
+}
+.display_error
+{
+    color: black;
+    font-size: 20px;
+}
+.login_error
+{
+    background-color:white;
+    width: 570px;
+    height: 70px; 
+}
+.height_df
+{
+    height: 900px;
+}
+table.scroll {
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /* text-align: left; */
+}
+
+table.scroll tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody { border-top: 2px solid black; }
+
