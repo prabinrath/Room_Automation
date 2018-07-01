@@ -15,7 +15,7 @@ It is a DIY module that enables remote control of electronic and electrical appl
 * LM 7805.
 * DHT 11.
 * SPDT switch.
-* SPST switchs.
+* SPST switch.
 * 3.3V voltage regulator.
 * 1N4007 Silicon diode.
 
