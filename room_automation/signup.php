@@ -24,7 +24,7 @@ and open the template in the editor.
         <div class="container-fluid">
             <div class="background_signup"><br><br>
                 <div class="row">
-                    <div class="col-sm-6 col-lg-4 col-lg-offset-4">
+                    <div class="col-xs-6 col-lg-4 col-xs-offset-4">
                         <br><br> <br><br><br><br>
                         <h1 style="font-size:35px; font-weight: bold; color:violet; ">SIGN UP</h1>
                         <form action="signup_script.php" method="POST">

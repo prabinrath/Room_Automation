@@ -4,7 +4,7 @@
           {
             die("not connected");
           }
-         $dbstatus=mysqli_select_db($con,"cyborg");
+         $dbstatus=mysqli_select_db($con,"room_automation");
          if(!$dbstatus)
 	{
 	 die("database not found");

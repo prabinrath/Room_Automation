@@ -40,7 +40,7 @@ and open the template in the editor.
                                 <form action="login_submit.php" method="POST">
                                     <div class="form-group">
                                         <label for="email" class="form" style="font-family: serif; font-size: 17px;">E-mail</label>
-                                        <input type="email" value="Enter email" class="form-control" name="email" placeholder="Enter e-mail id" required = "true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" >
+                                        <input type="email" value="" class="form-control" name="email" placeholder="Enter e-mail id" required = "true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" >
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="form" style="font-family: serif; font-size: 17px;">password</label>

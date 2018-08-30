@@ -152,7 +152,7 @@ void loop()
     if(WiFi.status()== WL_CONNECTED && data.substring(0,3)=="Hum")
     {
       HTTPClient http;
-      http.begin("http://192.168.43.185:80/room_automation/dhtdata.php");
+      http.begin("http://192.168.43.22:80/room_automation/dhtdata.php");
       http.addHeader("Content-Type", "application/x-www-form-urlencoded");
       int httpCode = http.POST(data);
       String payload = http.getString();

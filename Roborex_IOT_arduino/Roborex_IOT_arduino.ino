@@ -3,11 +3,11 @@
 #include<IRremote.h>
 #include<ShiftRegister74HC595.h>
 
-#define RECV_PIN 9
-#define DHTPIN 7
+#define RECV_PIN 7
+#define DHTPIN 9
 
 SoftwareSerial esp(5, 6);
-ShiftRegister74HC595 sr (1,2,3,4);
+ShiftRegister74HC595 sr (1,4,2,3);
 IRrecv irrecv(RECV_PIN); 
 decode_results results;
 DHT dht(DHTPIN, DHT11);
@@ -61,7 +61,7 @@ void setup()
 
 void loop() 
 {
-  if(millis()-currtime>=300000)
+  if(millis()-currtime>=30000)
     {
       hum = dht.readHumidity();
       temp= dht.readTemperature();

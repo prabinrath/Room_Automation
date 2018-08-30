@@ -6,15 +6,12 @@
     background: url("../images/background_.jpg")no-repeat center center ; 
     background-attachment: fixed;
     background-size: cover; 
-    height: 1180px;
+    height : 1800px;
 }
 .banner-content
 {
     position: relative; 
-    padding-top: 6%; 
-    padding-bottom: 6%; 
-    margin-top: 12%; 
-    margin-bottom: 12%;
+    
     max-width: 660px; 
    
 }
@@ -35,7 +32,7 @@
     background: url("../images/background.jpg")no-repeat center center ; 
     background-attachment: fixed;
     background-size: cover; 
-    height: 1080px;	
+    height: 1800px;	
 }
 .switch
 {

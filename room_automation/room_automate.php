@@ -268,7 +268,7 @@
             	</div>
             	<br><br><br><br>
             	<center><p style="color: #fff111; font-size:35px; font-family: serif; font-weight: bold; ">
-            		To know the details of Last 5 hours <br><center><form action = "data_fetch.php" target="_blank"><button type="submit" style="width: 200px; height: 50px;"><a  href="data_fetch.php" target="_blank" style="color: black; font-weight: bold; font-size: 30px;">Click Here.</a></button></form></center>
+            		To know the details of Last 5 hours <br><center><form action = "data_fetch.php" target="_blank"><button type="submit" style="width: 350px; height: 50px;"><a  href="data_fetch.php" target="_blank" style="color: black; font-weight: bold; font-size: 30px;">Click Here.</a></button></form></center>
             	</p></center><br><br>
             <form action="video.php" target="_blank">
             	<center><button class="btn btn-info" type="submit" style="font-size: 15px; font-weight:bold; color: black;">Watch Live Video  </a><span class="glyphicon glyphicon-play-circle" style="color: black"></span></button></center> <br><br><br><br>

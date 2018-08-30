@@ -21,12 +21,13 @@
         <div class="container-fluid">
             <div class="banner-image">
                 <div class="row">
-                    <div class= "col-md-6 col-sm-12 banner-content_">
-                        <br><br><br>
-                        <center><h1 style="color: white;font-weight: bold; font-family: serif;  font-size: 78px; flex-wrap: wrap;">Room Automation</h1></center>
+                    <div class= "col-md-6 col-xs-12 banner-content_">
+                        <br>
+			<center><h1 style="color: white;font-weight: bold; font-family: serif;  font-size: 82px; flex-wrap: wrap;">ROBOREX</h1></center>
+                        <center><h1 style="color: white;font-weight: bold; font-family: serif;  font-size: 78px; flex-wrap: wrap;">Room Automation</h1></center><br><br>
                         
                     </div>
-                    <div class="col-md-6 col-sm-12 banner-content_"><br><br><br>
+                    <div class="col-md-6 col-xs-12 banner-content_"><br><br><br>
                         <?php if(isset($_GET['login_error']))
                             {?>
                                 <div class="login_error"><p style="color: yellow; font-size: 30px; font-weight: bold; font-family: serif;">

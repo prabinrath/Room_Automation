@@ -34,39 +34,14 @@
 	  		</tr>
 	  		</tbody>
 					<?php
-						if(isset($_POST['submit']))
-						{
+						
 							$dt = new DateTime();
+
 							$min = $dt->format('i');
 							$hour = $dt->format('H');
 							$day = $dt->format('d');
 							$month = $dt->format('m');
-							if($min>=30)
-							{
-								$set_min=0;
-								for($i=30; $i < $min; $i++)
-								{
-									$set_min = $set_min+1;
-								}
-								$hour=$hour+1;
-							}
-							else
-							{
-								$set_min = $min+"30";
-							}
-							$min = $set_min;							
-							if($hour>=22)
-							{
-								$set=0;
-								for($i=22; $i < $hour; $i++)
-								{
-									$set = $set+1;
-								}		
-							}
-							else
-								$set=$hour+3;
-							$hour = $set ;
-							//echo $hour.":".$min;
+							
 							include 'dbconnection.php';
 							
 							$query = "SELECT * from details ";
@@ -80,72 +55,73 @@
 							 	$row_data=mysqli_fetch_array($query_res);
 									while($row_data)
 										{
-												$do=0;
-										$obtained_min = $row_data['time'][14].$row_data['time'][15];
-										$obtained_hour = $row_data['time'][11].$row_data['time'][12];
-										$obtained_day = $row_data['time'][9].$row_data['time'][10];	
-										$obtained_month = $row_data['time'][6].$row_data['time'][7];	
-																		//database time modified to get minute
-										if($hour<5)
-										{//if min is less than 5
-											$check=23;
-											for($j=0; $j<=$min; $j++)
-											{
-												$check=$check+1;
-											}
-										}
-										else
-										{
-											$check=$hour-5;
-										}
-										if($obtained_hour > $check && $obtained_day==$day){
-											$do = 1;
-										}
-										else if($obtained_hour > $check && $day - $obtained_day==1 ){
-											if($month =+ $obtained_month)
-											$do = 1;
-										}
-										else if($obtained_hour > $check && $month - $obtained_month==1)
-											{
-												if($obtained_month==1 || $obtained_month==3 || $obtained_month==5 || $obtained_month==7 || $obtained_month==8 || $obtained_month==10)
+												$flag= 0;
+												$db_min = $row_data['time'][14].$row_data['time'][15];
+												$db_hour = $row_data['time'][11].$row_data['time'][12];
+												$db_day = $row_data['time'][8].$row_data['time'][9];	
+												$db_month = $row_data['time'][5].$row_data['time'][6];	
+												
+												if($db_month ==  $month && $db_day ==  $day )
 												{
-													if($obtained_day-$day==30)
-														$do = 1;
+													if($db_hour == $hour)
+													{
+														if($min <= 59 && ($min - $db_min <= 5))
+														{
+															$flag = 1;
+														}
+													}
+													else if($hour - $db_hour == 1 && $min <=4)
+													{
+														$flag = 1;
+													}
 												}
-												else if($obtained_month==4 || $obtained_month==6 || $obtained_month==9 || $obtained_month==11)
+												
+												else if(($day - $db_day == 1) && $db_month ==  $month)
 												{
-													if($obtained_day-$day==29)
-														$do =1;
-												}												
-											}
+													  if($db_hour == $hour)
+													{
+														if($min <= 59 && ($min - $db_min <= 5))
+														{
+															$flag = 1;
+														}
+													}
+													else if($hour - $db_hour == 1 && $min <=4)
+													{
+														$flag = 1;
+													}
+												}
+												//echo $flag."  ";	
+																				//database time modified to get minute
+												
 
-										if($do==1){
-					?>
-									<tr bgcolor="#ddd">
-										<td><?php echo $ctr ?></td>
-										<td><?php echo $row_data['temperature']?></td>
-										<td><?php echo $row_data['humidity']?></td>
-										<td><?php echo $row_data['time']?></td>
-									</tr>
-									<?php
-										$ctr = $ctr+1;
-										}										
+												if($flag == 1)
+												{
+													?>
+													<tr bgcolor="#ddd">
+														<td><?php echo $ctr ?></td>
+														<td><?php echo $row_data['temperature']?></td>
+														<td><?php echo $row_data['humidity']?></td>
+														<td><?php echo $row_data['time']?></td>
+													</tr>
+													<?php
+														$ctr = $ctr+1;
+												}										
 										$row_data=mysqli_fetch_array($query_res);
 									}
 							 }
 							 else
-							{?>
-								 <tr bgcolor="#ddd">
-								   <td colspan="4">NO RECORD FOUND</td>
-								</tr>
-						    <?php
+								{
+									?>
+									 <tr bgcolor="#ddd">
+									   <td colspan="4">NO RECORD FOUND</td>
+									</tr>
+							    <?php
 						       }
-						        mysqli_close($con);
-						}
+						        mysqli_close($con);						
 						?>						
 			</table></center></div>	
 			<center><form action="data_fetch.php" method="POST"><button type="submit" value="submit" name="submit">Refresh</button></form></center>		
-		</div>
+		</div><br><br>
 		<?php include 'footer.php';?>
 	</body>
 </html>
