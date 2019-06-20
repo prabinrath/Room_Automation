@@ -20,7 +20,46 @@
 	</head>
 	<body>		
 		<?php include 'headers.php';?>
-		<div class="container-fluid height_df"><br><br><br><br>
+		<div class="container-fluid height_df"><br><br><br>
+			<?php 
+				$thresold = 12;
+				include 'dbconnection.php';
+					
+					$query_dist = "SELECT * from distance_details";
+					$query_res_dist = mysqli_query($con, $query_dist) or die(mysqli_error($con));
+					$row_d = mysqli_num_rows($query_res_dist);
+					while($row_d  >10)
+					{
+						$query_ = "DELETE FROM distance_details LIMIT 1";
+					    $query_res_ = mysqli_query($con, $query_) or die(mysqli_error($con));
+					    $row_d = $row_d - 1;
+					}
+						if($row_d > 0)
+						{
+							$count = 0;
+							$data = mysqli_fetch_array($query_res_dist);
+							while($data)
+							{
+								if($data['distance'] < $thresold)
+									$count = $count+1;
+
+								$data=mysqli_fetch_array($query_res_dist);
+							}
+							if($count >= 5)
+								{
+									?>
+  									<center><h3 style="color: red;">Warning</h3><span class="glyphicon glyphicon-warning-sign" style="color:red;"></span></center>									<center><h3 style="color: red;">There is danger!!</h3></center>
+
+								<?php
+									   echo '<script language="javascript">';
+									   echo 'alert("DANGER")';
+									   echo '</script>';
+								}
+
+						}
+						mysqli_close($con);
+			?>
+			<br><br>
 			<div style=" height: 800px;">
 			<center>
 			<table bgcolor="lightgray" border="2px solid green" cellspacing="0" cellpadding="7" width="50%" style="overflow: scroll">
@@ -34,7 +73,7 @@
 	  		</tr>
 	  		</tbody>
 					<?php
-						
+							include 'dbconnection.php';
 							$dt = new DateTime();
 
 							$min = $dt->format('i');
@@ -42,14 +81,48 @@
 							$day = $dt->format('d');
 							$month = $dt->format('m');
 							
-							include 'dbconnection.php';
-							
 							$query = "SELECT * from details ";
 							$query_res = mysqli_query($con, $query) or die(mysqli_error($con));
 
     						$row = mysqli_num_rows($query_res);
+    						
+    						 while($row > 10)
+    						 {
+    						 	$query_del = "DELETE FROM details LIMIT 1";
+                                $query_res_del = mysqli_query($con, $query_del) or die(mysqli_error($con));
+                                $row = $row-1;
+    						 }
+    						 if($row > 0)
+    						 {
+    						 	$ctr = 1;
+							 	$row_data=mysqli_fetch_array($query_res);
+									while($row_data)
+										{
+						?>
+											<tr bgcolor="#ddd">
+											<td><?php echo $ctr ?></td>
+											<td><?php echo $row_data['temperature']?></td>
+											<td><?php echo $row_data['humidity']?></td>
+											<td><?php echo $row_data['time']?></td>
+											</tr>
+						<?php
+												$ctr = $ctr+1;
+											$row_data=mysqli_fetch_array($query_res);
+									    }
 
-							 if($row>0)
+    						 }
+    						 else
+								{
+						?>
+									 <tr bgcolor="#ddd">
+									   <td colspan="4">NO RECORD FOUND</td>
+									</tr>
+					    <?php
+						       }
+						       mysqli_close($con);
+						      
+
+							 /*if($row > 0)
 							 {
 							 	$ctr = 1;//echo "true syntax";
 							 	$row_data=mysqli_fetch_array($query_res);
@@ -116,8 +189,8 @@
 									   <td colspan="4">NO RECORD FOUND</td>
 									</tr>
 							    <?php
-						       }
-						        mysqli_close($con);						
+						       }*/
+						        						
 						?>						
 			</table></center></div>	
 			<center><form action="data_fetch.php" method="POST"><button type="submit" value="submit" name="submit">Refresh</button></form></center>		

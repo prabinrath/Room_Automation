@@ -11,7 +11,7 @@ It is a DIY module that enables remote control of electronic and electrical appl
 * HC05 bluetooth module.
 * Arduino UNO. 
 * TSOP1738 IR reciever and IR remote.
-* ULN2003A.
+* 74HC595.
 * LM 7805.
 * DHT 11.
 * SPDT switch.

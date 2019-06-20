@@ -6,13 +6,14 @@
 #define RECV_PIN 7
 #define DHTPIN 9
 
-SoftwareSerial esp(5, 6);
+SoftwareSerial esp(5, 6);//Rx,Tx
 ShiftRegister74HC595 sr (1,4,2,3);
 IRrecv irrecv(RECV_PIN); 
 decode_results results;
 DHT dht(DHTPIN, DHT11);
 
 unsigned long currtime;
+double dis;
 int toggle;
 float hum,temp;
 
@@ -53,10 +54,14 @@ void setup()
 {
   Serial.begin(9600);
   esp.begin(9600);
+  pinMode(A1,INPUT);
+  pinMode(A4,OUTPUT);
+  pinMode(A5,OUTPUT);
   irrecv.enableIRIn();
   dht.begin();
   sr.setAllHigh();
   currtime=millis();
+  digitalWrite(A5,HIGH);
 }
 
 void loop() 
@@ -65,7 +70,8 @@ void loop()
     {
       hum = dht.readHumidity();
       temp= dht.readTemperature();
-      String data="Hum="+String((int)hum)+"&Temp="+String((int)temp);
+      dis=analogRead(A1);
+      String data="Hum="+String((int)hum)+"&Temp="+String((int)temp)+"&Dist="+String((int)dis);
       esp.print(data);
       Serial.println(data);
       currtime=millis();
